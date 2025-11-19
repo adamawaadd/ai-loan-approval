@@ -6,6 +6,8 @@ Throughout the project, I worked with a variety of Python data and ML tools at a
 
 Although this repository’s first commit was about halfway through the project, a large amount of experimentation happened earlier. I tested multiple models and ultimately selected a Decision Tree Classifier because it provides a human-interpretable reasoning path—an important feature for something as sensitive and consequential as loan approval. I tracked experimentation, feature engineering notes, and model performance in progress.txt.
 
+The "loan_approval_preliminary_data.html" file is downloadable and basically just shows a visualization of the distribution of each column of data (such as the distribution of the sampled group's age, income, employment experience, etc.)
+
 ## To-Do:
 1.) Add interpratability column
 
