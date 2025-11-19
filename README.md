@@ -8,5 +8,7 @@ Although this repository’s first commit was about halfway through the project,
 
 ## To-Do:
 1.) Add interpratability column
+
 2.) Make sure my test split is no more than ~5% worse than my training split
+
 3.) Deploy the trained loan application prediction model using Streamlit.
