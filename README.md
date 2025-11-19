@@ -8,6 +8,25 @@ Although this repository’s first commit was about halfway through the project,
 
 The "loan_approval_preliminary_data.html" file is downloadable and basically just shows a visualization of the distribution of each column of data (such as the distribution of the sampled group's age, income, employment experience, etc.)
 
+## Installation + Setup:
+1.) Clone the repository
+```
+git clone https://github.com/adamawaadd/ai-loan-approval.git
+cd ai-loan-approval
+```
+
+2.) Make sure your python version is 3.9 or higher
+
+3.) Install pandas, numpy, matplotlib, scikit-learn, and joblib
+```
+pip install numpy pandas matplotlib scikit-learn joblib
+```
+
+4.) Run the program!
+```
+python loan_approval.py
+```
+
 ## To-Do:
 1.) Add interpratability column
 
