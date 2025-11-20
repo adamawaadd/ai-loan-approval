@@ -15,7 +15,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from numpy.typing import NDArray
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, _tree
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score, train_test_split
@@ -46,6 +46,25 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     ) * df["person_income"]
     return df
 
+def get_rule_for_sample(model, feature_names, sample):
+    tree_ = model.tree_
+    feature = tree_.feature
+    threshold = tree_.threshold
+
+    node = 0
+    rules = []
+
+    while feature[node] != _tree.TREE_UNDEFINED:
+        feat_name = feature_names[feature[node]]
+        thresh = threshold[node]
+        if sample[feature[node]] <= thresh:
+            rules.append(f"{feat_name} <= {thresh:.3f}")
+            node = tree_.children_left[node]
+        else:
+            rules.append(f"{feat_name} > {thresh:.3f}")
+            node = tree_.children_right[node]
+
+    return " → ".join(rules)
 
 def main() -> None:
     df = pd.read_csv("loan_data.csv")
@@ -111,6 +130,24 @@ def main() -> None:
     best_model = grid.best_estimator_
     test_acc = accuracy_score(y_test, best_model.predict(X_test_scaled))
     print(f"Test accuracy: {test_acc:.3f}")
+
+    # Create a DataFrame with predictions + interpretability column
+    preds = best_model.predict(X_test_scaled)
+    interpretability = [
+        get_rule_for_sample(best_model, scale_cols, x)
+        for x in X_test_scaled
+    ]
+
+    # Build results dataframe
+    results_df = X_test.copy()
+    results_df["true_label"] = y_test.values
+    results_df["prediction"] = preds
+    results_df["interpretability"] = interpretability
+
+    # Save to CSV
+    results_df.to_csv("results.csv", index=False)
+
+    print("Saved detailed prediction results to results.csv")
 
     # Save model
     MODEL_DIR = "models"
