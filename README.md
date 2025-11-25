@@ -28,8 +28,4 @@ python loan_approval.py
 ```
 
 ## To-Do:
-1.) Add interpratability column
-
-2.) Make sure my test split is no more than ~5% worse than my training split
-
-3.) Deploy the trained loan application prediction model using Streamlit.
+1.) Make sure my test split is no more than ~5% worse than my training split
