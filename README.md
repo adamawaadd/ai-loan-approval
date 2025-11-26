@@ -28,6 +28,4 @@ python loan_approval.py
 ```
 
 ## To-Do:
-1.) Make sure my test split is no more than ~5% worse than my training split
-
-2.) Add the HTML file to .gitignore
+1.) Add the HTML file to .gitignore
