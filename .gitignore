@@ -1,2 +1,2 @@
-# Ignore the loan_approval_preliminary_data.html file
-loan_approval_preliminary_data.html
+# Ignore the .html file
+*.html
