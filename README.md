@@ -27,6 +27,3 @@ pip install numpy pandas matplotlib scikit-learn joblib
 ```
 python loan_approval.py
 ```
-
-## To-Do:
-1.) Add the HTML file to .gitignore
