@@ -27,3 +27,9 @@ pip install numpy pandas matplotlib scikit-learn joblib
 ```
 python loan_approval.py
 ```
+
+### Sreamlit Site (To Test Data Points):
+5.) Run this line:
+```
+streamlit run deployment.py
+```
